@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Q_type: MyString
+  Ques: MyString
+  opt1: MyString
+  opt2: MyString
+  opt3: MyString
+  opt4: MyString
+  ans: MyString
+
+two:
+  Q_type: MyString
+  Ques: MyString
+  opt1: MyString
+  opt2: MyString
+  opt3: MyString
+  opt4: MyString
+  ans: MyString

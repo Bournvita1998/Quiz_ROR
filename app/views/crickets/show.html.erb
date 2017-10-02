@@ -1,0 +1,81 @@
+<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<%= link_to '<button type="button">Go Back To Restart Quiz</button>'.html_safe, crickets_path %>
+
+<form method="GET" action="#">
+
+<h3>
+<%= @cricket.Q_type %>
+</h3>
+
+<h2>
+<%= @cricket.Ques %><br>
+</h2>
+
+<p>
+<!--   <strong>Opt1:</strong>
+ -->  
+
+<% if @cricket.Q_type == 'Single Correct' %>
+ 	
+<input type="radio" name="cq1" value="a"><%= @cricket.opt1 %></input>
+</p>
+
+<p>
+<!--   <strong>Opt2:</strong>
+ --><input type="radio" name="cq1" value="b"><%= @cricket.opt2 %></input>
+</p>
+
+<p>
+<!--   <strong>Opt3:</strong>
+ -->
+ <input type="radio" name="cq1" value="c"><%= @cricket.opt3 %></input>
+</p>
+
+<p>
+<!--   <strong>Opt4:</strong>
+ --><input type="radio" name="cq1" value="d"><%= @cricket.opt4 %></input>
+</p>
+ <% end %>
+
+<% if @cricket.Q_type == 'Multi Correct' %>
+ 	
+<input type="checkbox" name="cr1" value="a"><%= @cricket.opt1 %></input>
+</p>
+
+<p>
+<!--   <strong>Opt2:</strong>
+ --><input type="checkbox"  name="cr2" value="b"><%= @cricket.opt2 %></input>
+</p>
+
+<p>
+<!--   <strong>Opt3:</strong>
+ -->
+ <input type="checkbox"  name="cr3" value="c"><%= @cricket.opt3 %></input>
+</p>
+
+<p>
+<!--   <strong>Opt4:</strong>
+ --><input type="checkbox"  name="cr4" value="d"><%= @cricket.opt4 %></input>
+</p>
+<% end %>
+<!-- <h4>
+  <strong>Ans:</strong>
+ Ans: <%= @cricket.ans %>
+</h4>
+ -->
+<input type="submit" value="SUBMIT" />
+</form>
+<% if @a==0 %>
+<% elsif @a==1 %>
+	<span class="color:green">CORRECT</span>
+<% else %>
+	<span class="color:green"> NOT CORRECT</span>
+<% end %>
+<br>
+
+<% if Integer(@cricket.Ques[1]) < Cricket.count() %>
+<%= link_to '<button type="button">Next Question</button>'.html_safe, "/crickets/"+(Integer(@cricket.Ques[1])+2).to_s %>
+<% end %>
+<% if Integer(@cricket.Ques[1]) > 1 %>
+<%= link_to '<button type="button">Previous Question</button>'.html_safe, "/crickets/"+(Integer(@cricket.Ques[1])).to_s %>
+<% end %>

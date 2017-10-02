@@ -1,0 +1,81 @@
+<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<%= link_to '<button type="button">Go Back To Restart Quiz</button>'.html_safe, footballs_path %>
+
+<form method="GET" action="#">
+
+<h3>
+<%= @football.Q_type %>
+</h3>
+
+<h2>
+<%= @football.Ques %><br>
+</h2>
+
+<p>
+<!--   <strong>Opt1:</strong>
+ -->  
+
+<% if @football.Q_type == 'Single Correct' %>
+ 	
+<input type="radio" name="cq1" value="a"><%= @football.opt1 %></input>
+</p>
+
+<p>
+<!--   <strong>Opt2:</strong>
+ --><input type="radio" name="cq1" value="b"><%= @football.opt2 %></input>
+</p>
+
+<p>
+<!--   <strong>Opt3:</strong>
+ -->
+ <input type="radio" name="cq1" value="c"><%= @football.opt3 %></input>
+</p>
+
+<p>
+<!--   <strong>Opt4:</strong>
+ --><input type="radio" name="cq1" value="d"><%= @football.opt4 %></input>
+</p>
+ <% end %>
+
+<% if @football.Q_type == 'Multi Correct' %>
+ 	
+<input type="checkbox" name="cr1" value="a"><%= @football.opt1 %></input>
+</p>
+
+<p>
+<!--   <strong>Opt2:</strong>
+ --><input type="checkbox"  name="cr2" value="b"><%= @football.opt2 %></input>
+</p>
+
+<p>
+<!--   <strong>Opt3:</strong>
+ -->
+ <input type="checkbox"  name="cr3" value="c"><%= @football.opt3 %></input>
+</p>
+
+<p>
+<!--   <strong>Opt4:</strong>
+ --><input type="checkbox"  name="cr4" value="d"><%= @football.opt4 %></input>
+</p>
+<% end %>
+<!-- <h4>
+  <strong>Ans:</strong>
+ Ans: <%= @football.ans %>
+</h4>
+ -->
+<input type="submit" value="SUBMIT" />
+</form>
+<% if @a==0 %>
+<% elsif @a==1 %>
+	<span class="color:green">CORRECT</span>
+<% else %>
+	<span class="color:green"> NOT CORRECT</span>
+<% end %>
+<br>
+
+<% if Integer(@football.Ques[1]) < Football.count() %>
+<%= link_to '<button type="button">Next Question</button>'.html_safe, "/footballs/"+(Integer(@football.Ques[1])+1).to_s %>
+<% end %>
+<% if Integer(@football.Ques[1]) > 1 %>
+<%= link_to '<button type="button">Previous Question</button>'.html_safe, "/footballs/"+(Integer(@football.Ques[1])-1).to_s %>
+<% end %>
